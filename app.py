@@ -1,6 +1,9 @@
 """NTU-MARA Database & Programming — Final Project Gallery."""
 
+from pathlib import Path
+
 import streamlit as st
+from PIL import Image, ImageOps
 
 from projects import PROJECTS
 
@@ -19,6 +22,9 @@ CATEGORY_COLOURS = {
     "Customer Analytics": "primary",
 }
 COLUMNS = 3
+SCREENSHOT_DIR = Path(__file__).parent / "screenshots"
+SCREENSHOT_EXTS = (".png", ".jpg", ".jpeg", ".webp")
+THUMB_SIZE = (960, 540)  # every screenshot is cropped to 16:9 so cards line up
 
 st.markdown(
     """
@@ -29,6 +35,14 @@ st.markdown(
       .proj-desc { min-height: 4.8em; opacity: 0.85; }
       .proj-team { font-size: 0.85rem; opacity: 0.75; margin-bottom: 0.5rem; }
       .proj-team a { text-decoration: none; white-space: nowrap; }
+      .shot-ph {
+        aspect-ratio: 16 / 9; width: 100%; border-radius: 0.5rem; margin-bottom: 1rem;
+        border: 1.5px dashed rgba(31, 78, 156, 0.30); background: rgba(31, 78, 156, 0.05);
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+      }
+      .shot-ph .n { font-size: 2.2rem; font-weight: 700; opacity: 0.35; line-height: 1; }
+      .shot-ph .t { font-size: 0.8rem; opacity: 0.55; margin-top: 0.4rem; }
+      [data-testid="stImage"] img { border-radius: 0.5rem; }
     </style>
     """,
     unsafe_allow_html=True,
@@ -75,9 +89,38 @@ if not shown:
     st.stop()
 
 
+# ---------- Screenshots ----------
+def find_screenshot(group: int) -> Path | None:
+    for ext in SCREENSHOT_EXTS:
+        path = SCREENSHOT_DIR / f"group-{group:02d}{ext}"
+        if path.exists():
+            return path
+    return None
+
+
+@st.cache_data(show_spinner=False)
+def load_thumbnail(path: str, mtime: float) -> Image.Image:
+    """Crop to 16:9 keeping the top of the screen (where dashboards put headers and KPIs)."""
+    img = ImageOps.exif_transpose(Image.open(path)).convert("RGB")
+    return ImageOps.fit(img, THUMB_SIZE, method=Image.LANCZOS, centering=(0.5, 0.0))
+
+
+def render_screenshot(group: int) -> None:
+    path = find_screenshot(group)
+    if path:
+        st.image(load_thumbnail(str(path), path.stat().st_mtime), width="stretch")
+    else:
+        st.markdown(
+            f'<div class="shot-ph"><div class="n">{group:02d}</div>'
+            f'<div class="t">Screenshot coming soon</div></div>',
+            unsafe_allow_html=True,
+        )
+
+
 # ---------- Cards ----------
 def render_card(num: int, p: dict) -> None:
     with st.container(border=True):
+        render_screenshot(num)
         st.markdown(f'<div class="proj-num">GROUP {num:02d}</div>', unsafe_allow_html=True)
         st.markdown(f'<div class="proj-title">{p["title"]}</div>', unsafe_allow_html=True)
 

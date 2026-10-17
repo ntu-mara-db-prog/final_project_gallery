@@ -6,6 +6,10 @@ A Streamlit gallery of the 14 NTU-MARA Database & Programming group final projec
 
 Edit `projects.py` and fill in that group's `app_url` (and optionally `repo_url`; `members` are GitHub usernames). A project with an empty `app_url` shows as **Coming soon**. Commit and push; Streamlit Cloud redeploys automatically.
 
+## Adding a screenshot
+
+Drop the image into `screenshots/` named by group number, e.g. `screenshots/group-03.png` (`.png`, `.jpg`, `.jpeg` or `.webp`). It's cropped to 16:9 from the top automatically; without one, the card shows a placeholder.
+
 ## Run locally
 
 Dependencies are managed with [uv](https://docs.astral.sh/uv/).
@@ -39,6 +43,7 @@ Don't add a `requirements.txt` alongside `uv.lock`; Cloud uses only one dependen
 |---|---|
 | `app.py` | The gallery page |
 | `projects.py` | Project list — the only file you need to edit |
+| `screenshots/` | One image per group (`group-01.png` … `group-14.png`) |
 | `pyproject.toml` | Project metadata and dependencies |
 | `uv.lock` | Exact pinned versions (used by Streamlit Cloud) |
 | `.python-version` | Python version for uv |

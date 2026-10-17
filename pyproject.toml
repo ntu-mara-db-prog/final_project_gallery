@@ -5,6 +5,7 @@ description = "Gallery of NTU-MARA Database & Programming group final projects"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "pillow>=12.3.0",
     "streamlit>=1.46",
 ]
 
