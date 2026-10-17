@@ -1,0 +1,12 @@
+[project]
+name = "final-project-gallery"
+version = "0.1.0"
+description = "Gallery of NTU-MARA Database & Programming group final projects"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "streamlit>=1.46",
+]
+
+[tool.uv]
+package = false
