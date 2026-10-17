@@ -27,7 +27,8 @@ st.markdown(
       .proj-num { font-size: 0.8rem; letter-spacing: 0.08em; opacity: 0.6; margin-bottom: -0.6rem; }
       .proj-title { font-size: 1.2rem; font-weight: 700; line-height: 1.3; min-height: 3.2em; margin: 0.4rem 0 0.2rem; }
       .proj-desc { min-height: 4.8em; opacity: 0.85; }
-      .proj-team { font-size: 0.85rem; opacity: 0.7; }
+      .proj-team { font-size: 0.85rem; opacity: 0.75; margin-bottom: 0.5rem; }
+      .proj-team a { text-decoration: none; white-space: nowrap; }
     </style>
     """,
     unsafe_allow_html=True,
@@ -47,7 +48,7 @@ st.divider()
 
 # ---------- Filters ----------
 f1, f2 = st.columns([3, 1], vertical_alignment="bottom")
-query = f1.text_input("Search", placeholder="Search by title, description or team…", label_visibility="collapsed")
+query = f1.text_input("Search", placeholder="Search by title, description or GitHub username…", label_visibility="collapsed")
 live_only = f2.toggle("Live only", value=False)
 
 categories = sorted({p["category"] for p in PROJECTS})
@@ -61,14 +62,13 @@ def matches(p: dict) -> bool:
         return False
     if query:
         haystack = " ".join(
-            [p["title"], p["description"], p.get("team", ""), " ".join(p.get("members", []))]
+            [p["title"], p["description"], f"group {p['group']}", " ".join(p.get("members", []))]
         ).lower()
         return query.lower() in haystack
     return True
 
 
-# Keep the original project numbers even when filtered.
-shown = [(i, p) for i, p in enumerate(PROJECTS, start=1) if matches(p)]
+shown = [(p["group"], p) for p in PROJECTS if matches(p)]
 
 if not shown:
     st.info("No projects match those filters.")
@@ -78,7 +78,7 @@ if not shown:
 # ---------- Cards ----------
 def render_card(num: int, p: dict) -> None:
     with st.container(border=True):
-        st.markdown(f'<div class="proj-num">PROJECT {num:02d}</div>', unsafe_allow_html=True)
+        st.markdown(f'<div class="proj-num">GROUP {num:02d}</div>', unsafe_allow_html=True)
         st.markdown(f'<div class="proj-title">{p["title"]}</div>', unsafe_allow_html=True)
 
         colour = CATEGORY_COLOURS.get(p["category"], "gray")
@@ -87,9 +87,12 @@ def render_card(num: int, p: dict) -> None:
 
         st.markdown(f'<div class="proj-desc">{p["description"]}</div>', unsafe_allow_html=True)
 
-        team_bits = [b for b in [p.get("team", ""), ", ".join(p.get("members", []))] if b]
-        if team_bits:
-            st.markdown(f'<div class="proj-team">👥 {" — ".join(team_bits)}</div>', unsafe_allow_html=True)
+        members = p.get("members", [])
+        if members:
+            links = " · ".join(
+                f'<a href="https://github.com/{m}" target="_blank">@{m}</a>' for m in members
+            )
+            st.markdown(f'<div class="proj-team">👥 {links}</div>', unsafe_allow_html=True)
 
         b1, b2 = st.columns(2)
         if p["app_url"].strip():
