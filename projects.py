@@ -117,7 +117,7 @@ PROJECTS = [
         "category": "Insurance",
         "description": "Rates motor policies low, medium or high risk and recommends an underwriting action, with a manager dashboard for loss ratio and STP rate.",
         "members": ["xxxkwee", "elspethsu", "chr040820"],
-        "app_url": "",
+        "app_url": "https://bestunderwritingdashboardenhanced.streamlit.app/",
         "repo_url": "",
     },
     {
