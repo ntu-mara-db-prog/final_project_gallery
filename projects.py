@@ -54,7 +54,7 @@ PROJECTS = [
         "category": "Finance & Investment",
         "description": "Predicts a company's next-year ROIC and Tobin's Q from its R&D and patent activity, with prediction ranges, peer benchmarks and GenAI explanations.",
         "members": ["Lilym-27", "yruoyu743-lab", "Hytro0803"],
-        "app_url": "",
+        "app_url": "https://group-5-project-ba6003-eu6retmnrymclxeftebo5m.streamlit.app/",
         "repo_url": "",
     },
     {
