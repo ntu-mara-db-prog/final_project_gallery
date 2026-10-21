@@ -1,11 +1,17 @@
 """NTU-MARA Database & Programming — Final Project Gallery."""
 
+import importlib
 from pathlib import Path
 
 import streamlit as st
 from PIL import Image, ImageOps
 
-from projects import PROJECTS
+import projects
+
+# Re-read projects.py on every run so a pushed edit shows up without
+# restarting the app (Streamlit Cloud otherwise keeps the first import cached).
+importlib.reload(projects)
+PROJECTS = projects.PROJECTS
 
 st.set_page_config(
     page_title="Final Project Gallery",
