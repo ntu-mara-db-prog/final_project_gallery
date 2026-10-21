@@ -36,7 +36,7 @@ PROJECTS = [
         "category": "Property & Public Data",
         "description": "Enter a flat's town, type, floor area, storey and remaining lease to get an estimated resale price, alongside similar recent sales and town price trends.",
         "members": ["bingxuanwang32-beep", "wst2035447864-debug", "jessie-xx526"],
-        "app_url": "",
+        "app_url": "https://group-3-djlqszijzhac29etmwie9y.streamlit.app/",
         "repo_url": "",
     },
     {
