@@ -108,7 +108,7 @@ PROJECTS = [
         "category": "Risk & Compliance",
         "description": "Prioritises high-risk transactions, shows why each was flagged, and drafts a short GenAI investigation memo from verified data.",
         "members": ["lunaticyang22", "LuyuanH", "LiaoYanchao1"],
-        "app_url": "",
+        "app_url": "https://amlens-ba6003.streamlit.app/",
         "repo_url": "",
     },
     {
