@@ -58,7 +58,12 @@ st.markdown(
 st.title("Final Project Gallery")
 st.caption("NTU-MARA · Database & Programming · Group final projects built with Python, SQL and Streamlit")
 
-live = [p for p in PROJECTS if p["app_url"].strip()]
+def is_live(p: dict) -> bool:
+    """Deployed: has a public link, or is marked private (deployed but not shared)."""
+    return bool(p["app_url"].strip()) or p.get("private", False)
+
+
+live = [p for p in PROJECTS if is_live(p)]
 m1, m2, m3 = st.columns(3)
 m1.metric("Projects", len(PROJECTS))
 m2.metric("Live dashboards", len(live))
@@ -76,7 +81,7 @@ picked = st.pills("Theme", categories, selection_mode="multi", label_visibility=
 
 
 def matches(p: dict) -> bool:
-    if live_only and not p["app_url"].strip():
+    if live_only and not is_live(p):
         return False
     if picked and p["category"] not in picked:
         return False
@@ -131,7 +136,12 @@ def render_card(num: int, p: dict) -> None:
         st.markdown(f'<div class="proj-title">{p["title"]}</div>', unsafe_allow_html=True)
 
         colour = CATEGORY_COLOURS.get(p["category"], "gray")
-        status = ":green-badge[● Live]" if p["app_url"].strip() else ":gray-badge[Coming soon]"
+        if p.get("private", False):
+            status = ":orange-badge[🔒 Private]"
+        elif p["app_url"].strip():
+            status = ":green-badge[● Live]"
+        else:
+            status = ":gray-badge[Coming soon]"
         st.markdown(f":{colour}-badge[{p['category']}] &nbsp; {status}")
 
         st.markdown(f'<div class="proj-desc">{p["description"]}</div>', unsafe_allow_html=True)
@@ -144,7 +154,9 @@ def render_card(num: int, p: dict) -> None:
             st.markdown(f'<div class="proj-team">👥 {links}</div>', unsafe_allow_html=True)
 
         b1, b2 = st.columns(2)
-        if p["app_url"].strip():
+        if p.get("private", False):
+            b1.button("🔒 Private link only", disabled=True, width="stretch", key=f"pv-{num}")
+        elif p["app_url"].strip():
             b1.link_button("Open dashboard ↗", p["app_url"], type="primary", width="stretch")
         else:
             b1.button("Open dashboard", disabled=True, width="stretch", key=f"na-{num}")

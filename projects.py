@@ -5,6 +5,8 @@ For each group, fill in:
   app_url   – the group's Streamlit Cloud link (leave "" until they send it)
   repo_url  – optional GitHub repo link
   members   – GitHub usernames; each shows as a link to that profile
+  private   – optional; True if the app is deployed but its link isn't shared
+              (card shows "🔒 Private link only" instead of a button)
 
 The group number is the same as the project number.
 A project with an empty app_url shows as "Coming soon".
@@ -19,6 +21,7 @@ PROJECTS = [
         "description": "One web app for the whole quant workflow: continuously updated data, factor development, strategy construction, backtesting with transaction costs, and visualisation of returns and risk.",
         "members": ["XYan-Alex", "Time-sand", "yutiansheng040506-ux", "CarlosT003"],
         "app_url": "",
+        "private": True,
         "repo_url": "",
     },
     {

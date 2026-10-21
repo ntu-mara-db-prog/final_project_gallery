@@ -4,7 +4,7 @@ A Streamlit gallery of the 14 NTU-MARA Database & Programming group final projec
 
 ## Adding a team's link
 
-Edit `projects.py` and fill in that group's `app_url` (and optionally `repo_url`; `members` are GitHub usernames). A project with an empty `app_url` shows as **Coming soon**. Commit and push; Streamlit Cloud redeploys automatically.
+Edit `projects.py` and fill in that group's `app_url` (and optionally `repo_url`; `members` are GitHub usernames). A project with an empty `app_url` shows as **Coming soon**. Set `"private": True` for an app that is deployed but whose link is not shared; its card shows **🔒 Private link only**. Commit and push; Streamlit Cloud redeploys automatically.
 
 ## Adding a screenshot
 
