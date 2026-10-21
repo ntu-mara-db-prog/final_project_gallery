@@ -27,7 +27,7 @@ PROJECTS = [
         "category": "Finance & Investment",
         "description": "Option-chain dashboard for China's A-share index ETF options, built on a PostgreSQL database of cleaned historical data with gamma exposure and VIX-style metrics.",
         "members": ["jwk9527", "HRWANG292254", "lleopold172-star"],
-        "app_url": "",
+        "app_url": "https://ba6003group2-ldhm5tobn5e7je2cx3ovhu.streamlit.app/",
         "repo_url": "",
     },
     {
