@@ -126,7 +126,7 @@ PROJECTS = [
         "category": "Risk & Compliance",
         "description": "Combines economic, financial and sustainability indicators into a Green / Amber / Red rating for Manufacturing, Real Estate, Transport & Storage, and Info & Comms.",
         "members": ["ansanc", "justindar", "Yogaraj31"],
-        "app_url": "",
+        "app_url": "https://industrytrafficlight-mara-group13.streamlit.app/",
         "repo_url": "",
     },
     {
