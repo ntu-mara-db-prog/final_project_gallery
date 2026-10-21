@@ -81,7 +81,7 @@ PROJECTS = [
         "category": "Environment & Climate",
         "description": "Select an Australian region to see its historical bushfire frequency, severity and trends, a Bushfire Exposure Score, and a GenAI plain-language summary.",
         "members": ["Gsteng", "3291602545-ops", "Y1-YY"],
-        "app_url": "",
+        "app_url": "https://ba6003-group8-bushfire.streamlit.app/",
         "repo_url": "",
     },
     {
