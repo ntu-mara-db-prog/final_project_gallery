@@ -72,7 +72,7 @@ PROJECTS = [
         "category": "Insurance",
         "description": "Assesses accident risk under different weather, visibility and car-model conditions for drivers, fleet operators and insurers.",
         "members": ["LiuPengyu1028", "a19160371436-sys", "yangjiankai0305"],
-        "app_url": "",
+        "app_url": "https://california-fleet-safety-g7.streamlit.app/",
         "repo_url": "",
     },
     {
