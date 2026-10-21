@@ -99,7 +99,7 @@ PROJECTS = [
         "category": "Insurance",
         "description": "Enter age, gender, BMI and smoking status to estimate likely medical charges, as a reference when comparing health insurance plans.",
         "members": ["HuangYurui0401", "yiqiao1024", "zengzhanlevy-ux"],
-        "app_url": "",
+        "app_url": "https://medical-charge-prediction.streamlit.app/",
         "repo_url": "",
     },
     {
