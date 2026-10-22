@@ -138,7 +138,7 @@ PROJECTS = [
         "category": "Finance & Investment",
         "description": "Uses factor regression and portfolio optimisation to decide which stocks to hold and in what weights, with AI explaining the results.",
         "members": ["e99154506-ops", "catherinechen127", "zyt20041020"],
-        "app_url": "",
+        "app_url": "https://ba6003-group-project-y8shqfpgab5ezyj9hymqje.streamlit.app/",
         "repo_url": "",
     },
 ]
