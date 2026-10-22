@@ -93,7 +93,7 @@ PROJECTS = [
         "category": "Insurance",
         "description": "Uses machine learning to flag potentially fraudulent motor claims and visualises fraud risk, claim patterns and key risk factors.",
         "members": ["Miaomiao-1225", "mifan830717-bit", "yxy0528821"],
-        "app_url": "",
+        "app_url": "https://miaomiao-1225-group-9-app-gutumw.streamlit.app/",
         "repo_url": "",
     },
     {
