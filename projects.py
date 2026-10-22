@@ -48,7 +48,7 @@ PROJECTS = [
         "category": "Environment & Climate",
         "description": "Combines real-time PM2.5 readings across Singapore's five NEA regions with weather and ASMC regional fire data to flag where outdoor work needs haze-risk review.",
         "members": ["xuezhenxuan985-crypto", "Ceciliay7", "vicky727-momo", "jhui57914-dev"],
-        "app_url": "",
+        "app_url": "https://xuezhenxuan985-crypto-haze-ops-dashboard-app-tbejsp.streamlit.app/",
         "repo_url": "",
     },
     {
